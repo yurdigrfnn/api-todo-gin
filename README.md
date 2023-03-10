@@ -14,7 +14,7 @@
 
 ##### Parameters
 
-> | name               |  type       | data type               | body                                                     |description                                       |
+> | param              |  type       | data type               | body                                                     |description                                       |
 > |--------------------|-------------|-------------------------|----------------------------------------------------------|------------------------------------------------|
 > | `api/register`     |  `required` | `object (JSON)`         | `{"email" : "example@email" ,"password" : "example"}`    |`create user`                                       |
 > | `api/signin`       |  `required` | `object (JSON)`         | `{"email" : "example@email" ,"password" : "example"}`    |`Login user `                                      |
@@ -51,7 +51,7 @@
 
 ##### Parameters
 
-> | name            |  type      | body                                               | description                                          |
+> | param           |  type      | body                                               | description                                          |
 > |-----------------|------------|----------------------------------------------------|------------------------------------------------------|
 > | `api/todo/{id}` |  required  | `{"name" : "example" ,"complete" : bool }`         | Edit tode                                            |
 
@@ -69,7 +69,7 @@
 
 ##### Parameters
 
-> | name            |  type      | body                                               | description                                          |
+> | param           |  type      | body                                               | description                                          |
 > |-----------------|------------|----------------------------------------------------|------------------------------------------------------|
 > | `api/todo/`     |  required  | `{"name" : "example"`                              | Edit tode                                            |
 
@@ -88,7 +88,7 @@
     
 ##### Parameters
 
-> | name            |  type      | description                                        |
+> | param           |  type      | description                                        |
 > |-----------------|------------|----------------------------------------------------|
 > | `api/todo/{id}` |  required  | DELETE tode                                        |
 
