@@ -64,6 +64,24 @@
 
 </details>
 
+<details>
+  <summary><code>POST</code> <code>(Crate todo)</code></summary>
+
+##### Parameters
+
+> | name            |  type      | body                                               | description                                          |
+> |-----------------|------------|----------------------------------------------------|------------------------------------------------------|
+> | `api/todo/`     |  required  | `{"name" : "example"`                              | Edit tode                                            |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | `{"isError": false,"todos": {} }`                                   |
+> | `401`         | `application/json`                | `{"isError": true ,"message":"unauthorize"}`                        |
+
+</details>
+
 
 <details>
   <summary><code>DELETE</code> <code>(DELETE TODO)</code></summary>
@@ -71,8 +89,8 @@
 ##### Parameters
 
 > | name            |  type      | description                                        |
-> |-----------------|------------|----------------------------------------------------|------------------------------------------------------|
-> | `api/todo/{id}` |  required  | DELETE tode                                            |
+> |-----------------|------------|----------------------------------------------------|
+> | `api/todo/{id}` |  required  | DELETE tode                                        |
 
 ##### Responses
 
