@@ -124,20 +124,51 @@ func Signin(c *gin.Context) {
 		})
 		return
 	}
-	c.SetSameSite(http.SameSiteLaxMode)
-	c.SetCookie("Authorization", tokenString, 3600*24*30, "", "", false, true)
+	cookie := http.Cookie{
+		Name:     "Authorization",
+		Value:    tokenString,
+		Expires:  time.Now().Add(time.Hour * 24 * 30),
+		Path:     "/",
+		Domain:   "http://localhost:8000",
+		SameSite: http.SameSiteNoneMode,
+		Secure:   true,
+		HttpOnly: true,
+	}
+
+	http.SetCookie(c.Writer, &cookie)
 
 	c.JSON(http.StatusOK, SigninResponse{
 		IsError: false,
 		Message: "Successful login",
-		Token: tokenString,
+		Token:   tokenString,
 	})
 
 }
 
 func Validate(c *gin.Context) {
 	user, _ := c.Get("user")
+
 	c.JSON(http.StatusOK, gin.H{
-		"data": user,
+		"isError": false,
+		"data":    user,
+	})
+}
+
+func Logout(c *gin.Context) {
+	pastTime := time.Now().Add(-time.Hour) // set the expiration time in the past
+	cookie := http.Cookie{
+		Name:     "Authorization",
+		Value:    "",
+		Expires:  pastTime,
+		Path:     "/",
+		Domain:   "http://localhost:8000",
+		SameSite: http.SameSiteNoneMode,
+		Secure:   true,
+		HttpOnly: true,
+	}
+	http.SetCookie(c.Writer, &cookie)
+	c.JSON(http.StatusOK, gin.H{
+		"isError": false,
+		"message": "Logout successful",
 	})
 }
